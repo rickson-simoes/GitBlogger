@@ -1,6 +1,11 @@
+import { Profile } from "./components/Profile";
+import { Container } from "./styles";
+
 export function Home() {
 	return (
-		<div>
-   HomePage
-		</div>
-	);}
+		<Container>
+			<Profile />
+			HomePage
+		</Container>
+	);
+}
