@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  box-shadow: inset 0px 1px 9px 7px ${props => props.theme.baseBackground};
+  box-shadow: inset 0px -11px 20px 6px ${props => props.theme.baseBackground};
 
   height: 296px;
 
