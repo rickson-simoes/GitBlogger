@@ -16,4 +16,9 @@ export const GlobalStyle = createGlobalStyle`
   body, input, button {
     font: 400 1rem 'Nunito', sans-serif;
   }
+
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.blue};
+  }
 `;
