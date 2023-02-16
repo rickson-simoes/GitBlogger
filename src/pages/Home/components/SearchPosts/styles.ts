@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const SearchPostsContainer = styled.div`
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 export const SearchContent = styled.section`
@@ -46,3 +49,44 @@ export const SearchContent = styled.section`
     }
   }
 `
+
+export const PostList = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    background-color: ${props => props.theme.basePost};
+    border-radius: 1.125rem;
+    padding: 2rem;    
+
+    div {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+
+      strong {
+        color: ${props => props.theme.baseTitle};
+        font-size: 1.25rem;
+        line-height: 160%;
+        max-width: 16rem;
+      }
+
+      span {
+        color: ${props => props.theme.baseSpan};
+        font-size: 0.875rem;
+      }
+    }
+
+    span {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+  }
+`;
