@@ -21,6 +21,7 @@ export function ErrorContainer({ status }: IErrorContainer) {
         <>
           <FontAwesomeIcon icon={faBan} size="8x" fade={true} />
           <span>Oops! Too many requests, go drink some water.</span>
+          <span>Get back here in about one hour.</span>
         </>}
     </Container>
   )
