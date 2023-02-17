@@ -1,19 +1,9 @@
 import styled from "styled-components";
 
-export const ProfileContainer = styled.div`
-  background: ${props => props.theme.baseProfile};
-  padding: 2rem;
-  border-radius: 6px;
-  display: flex;
-  gap: 2rem;
-  margin-top: -6.25rem;
-
-  > img {
-    border-radius: 8px;
-    object-fit: cover;
-    width: 148px;
-    height: 148px;
-  }
+export const ProfileImage = styled.img`
+  border-radius: 8px;
+  width: 148px;
+  height: 148px;
 `
 
 export const ProfileInfo = styled.div`
