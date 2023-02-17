@@ -1,6 +1,13 @@
 import { PostList, SearchContent, SearchPostsContainer } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export function SearchPosts() {
+  const navigate = useNavigate();
+
+  function navigateTo(params: string) {
+    navigate(`/post/${params}`);
+  }
+
   return (
     <SearchPostsContainer>
       <SearchContent>
@@ -15,7 +22,7 @@ export function SearchPosts() {
       </SearchContent>
 
       <PostList>
-        <article>
+        <article onClick={() => navigateTo("123")}>
           <div>
             <strong>JavaScript data types and data structures</strong>
             <span>Há 1 dia</span>
