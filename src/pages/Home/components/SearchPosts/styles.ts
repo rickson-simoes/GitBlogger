@@ -62,7 +62,15 @@ export const PostList = styled.section`
 
     background-color: ${props => props.theme.basePost};
     border-radius: 1.125rem;
-    padding: 2rem;    
+    padding: 2rem;
+
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: inset 14px -1px 0px -3px ${props => props.theme.blue};
+      filter: brightness(1.18);
+    }
 
     div {
       display: flex;
