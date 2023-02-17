@@ -14,7 +14,7 @@ export function PostInformation({ postId }: PostInformation) {
       <section>
         <NavLink to="/">
           <FontAwesomeIcon icon={faChevronLeft} />
-          <span>voltar</span>
+          <span>Back</span>
         </NavLink>
 
         <a href="https://github.com/rickson-simoes" target="_blank">
