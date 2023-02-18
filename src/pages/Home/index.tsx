@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import { Profile } from "./components/Profile";
 import { SearchPosts } from "./components/SearchPosts";
 import { Container } from "./styles";
-import { IProfileData } from "./components/Profile/ProfileContent";
 import { getGithubProfileContent } from "./components/Requests/profileContentReq";
-
-export type IStatus = "loading" | "error" | "success" | "forbidden";
+import { IProfileData, IStatus } from "@/types/appCustomTypes/types";
 
 export function Home() {
 	const [profileData, setProfileData] = useState<IProfileData>({} as IProfileData)

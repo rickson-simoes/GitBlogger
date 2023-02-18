@@ -1,7 +1,6 @@
 import { api } from "@/services/api";
+import { IProfileData, IStatus } from "@/types/appCustomTypes/types";
 import { AxiosError } from "axios";
-import { IStatus } from "../..";
-import { IProfileData } from "../Profile/ProfileContent";
 
 export const getGithubProfileContent = async (username: string): Promise<[IStatus, IProfileData]> => {
   let profileData: IProfileData = {} as IProfileData;

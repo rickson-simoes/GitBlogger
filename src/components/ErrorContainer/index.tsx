@@ -1,11 +1,7 @@
-import { IStatus } from "@/pages/Home";
+import { IErrorContainer } from "@/types/appCustomTypes/types";
 import { faBan, faBomb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container } from "./styles";
-
-interface IErrorContainer {
-  status: IStatus;
-}
 
 export function ErrorContainer({ status }: IErrorContainer) {
   return (

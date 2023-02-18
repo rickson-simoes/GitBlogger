@@ -1,14 +1,9 @@
 import { ErrorContainer } from "@/components/ErrorContainer";
 import { MainContainer } from "@/components/MainContainer";
+import { IProfile } from "@/types/appCustomTypes/types";
 import { faArrowsSpin } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IStatus } from "../..";
-import { IProfileData, ProfileContent } from "./ProfileContent";
-
-interface IProfile {
-  status: IStatus;
-  profileData: IProfileData;
-}
+import { ProfileContent } from "./ProfileContent";
 
 
 export function Profile({ status, profileData }: IProfile) {

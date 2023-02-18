@@ -3,12 +3,9 @@ import { faArrowUpRightFromSquare, faChevronLeft, faCalendarDay, faComment } fro
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Container } from './styles';
 import { NavLink } from 'react-router-dom';
+import { IPostInformation } from '@/types/appCustomTypes/types';
 
-interface PostInformation {
-  postId: string;
-}
-
-export function PostInformation({ postId }: PostInformation) {
+export function PostInformation({ postId }: IPostInformation) {
   return (
     <Container>
       <section>

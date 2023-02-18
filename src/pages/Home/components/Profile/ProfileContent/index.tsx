@@ -7,16 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { MainContainer } from "@/components/MainContainer";
-
-export interface IProfileData {
-  name: string;
-  avatar_url: string;
-  html_url: string;
-  bio: string;
-  login: string;
-  followers: number;
-  public_repos: number;
-}
+import { IProfileData } from "@/types/appCustomTypes/types";
 
 export function ProfileContent(profileInfo: IProfileData) {
   return (
