@@ -1,58 +1,23 @@
-import { ProfileImage, ProfileInfo } from "./styles";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowUpRightFromSquare,
-  faSheetPlastic,
-  faUserGroup
-} from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { ErrorContainer } from "@/components/ErrorContainer";
 import { MainContainer } from "@/components/MainContainer";
+import { faArrowsSpin } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IStatus } from "../..";
+import { IProfileData, ProfileContent } from "./ProfileContent";
 
-export interface IProfile {
-  name: string;
-  avatar_url: string;
-  html_url: string;
-  bio: string;
-  login: string;
-  followers: number;
-  public_repos: number;
+interface IProfile {
+  status: IStatus;
+  profileData: IProfileData;
 }
 
-export function Profile(profileInfo: IProfile) {
+
+export function Profile({ status, profileData }: IProfile) {
   return (
-    <MainContainer>
-      <ProfileImage src={profileInfo.avatar_url} alt={`Profile Github Picture from ${profileInfo.name}`} />
-
-      <ProfileInfo>
-        <section>
-          <strong>{profileInfo.name}</strong>
-          <a href={profileInfo.html_url} target="_blank">
-            <span>Github </span>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
-        </section>
-
-        <section>
-          {profileInfo.bio}
-        </section>
-
-        <section>
-          <div>
-            <FontAwesomeIcon icon={faGithub} />
-            <span>{profileInfo.login}</span>
-          </div>
-
-          <div>
-            <FontAwesomeIcon icon={faSheetPlastic} />
-            <span>Public Repos: {profileInfo.public_repos}</span>
-          </div>
-
-          <div>
-            <FontAwesomeIcon icon={faUserGroup} />
-            <span>{profileInfo.followers} Followers</span>
-          </div>
-        </section>
-      </ProfileInfo>
-    </MainContainer>
+    <>
+      {status == "loading" && <MainContainer children={<FontAwesomeIcon icon={faArrowsSpin} size="8x" spin={true} />} />}
+      {status == "success" && <ProfileContent {...profileData} />}
+      {status == "error" && <MainContainer children={<ErrorContainer status={status} />} />}
+      {status == "forbidden" && <MainContainer children={<ErrorContainer status={status} />} />}
+    </>
   )
 };

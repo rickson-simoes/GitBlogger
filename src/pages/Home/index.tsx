@@ -1,24 +1,22 @@
-import { ErrorContainer } from "@/components/ErrorContainer";
-import { MainContainer } from "@/components/MainContainer";
 import { api } from "@/services/api";
-import { faArrowsSpin } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { IProfile, Profile } from "./components/Profile";
+import { Profile } from "./components/Profile";
 import { SearchPosts } from "./components/SearchPosts";
 import { Container } from "./styles";
 import { AxiosError } from 'axios';
+import { IProfileData } from "./components/Profile/ProfileContent";
 
 export type IStatus = "loading" | "error" | "success" | "forbidden";
 
 export function Home() {
-	const [profileData, setProfileData] = useState<IProfile>({} as IProfile)
+	const [profileData, setProfileData] = useState<IProfileData>({} as IProfileData)
 	const [status, setStatus] = useState<IStatus>("loading");
+
 	const username = 'rickson-simoes';
 
 	async function getGithubContent() {
 		try {
-			const response = await api.get<IProfile>(`/users/${username}`);
+			const response = await api.get<IProfileData>(`/users/${username}`);
 
 			if (response.status === 200) {
 				setProfileData(response.data);
@@ -42,10 +40,8 @@ export function Home() {
 
 	return (
 		<Container>
-			{status == "loading" && <MainContainer children={<FontAwesomeIcon icon={faArrowsSpin} size="8x" spin={true} />} />}
-			{status == "success" && <Profile {...profileData} />}
-			{status == "error" && <MainContainer children={<ErrorContainer status={status} />} />}
-			{status == "forbidden" && <MainContainer children={<ErrorContainer status={status} />} />}
+			<Profile profileData={profileData} status={status} />
+
 			<SearchPosts />
 		</Container>
 	);
