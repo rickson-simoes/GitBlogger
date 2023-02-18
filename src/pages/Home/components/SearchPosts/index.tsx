@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "@/services/api";
 import { IIssuePost, ISearchPosts } from "@/types/appCustomTypes/types";
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 
 export function SearchPosts({ username, repositoryName }: ISearchPosts) {
@@ -45,7 +46,9 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
             </div>
 
             <span>
-              {issuePost.body}
+              <ReactMarkdown>
+                {issuePost.body}
+              </ReactMarkdown>
             </span>
           </article>
         ))}
