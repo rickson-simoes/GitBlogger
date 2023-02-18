@@ -28,3 +28,17 @@ export interface IProfile {
 export interface IPostInformation {
   postId: string;
 }
+
+export interface ISearchPosts {
+  username: string;
+  repositoryName: string;
+}
+
+export interface IIssuePost {
+  title: string;
+  created_at: Date;
+  body: string;
+  number: number;
+  comments?: string;
+  html_url?: string;
+}
