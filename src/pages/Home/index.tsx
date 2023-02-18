@@ -9,6 +9,7 @@ export function Home() {
 	const [profileData, setProfileData] = useState<IProfileData>({} as IProfileData)
 	const [status, setStatus] = useState<IStatus>("loading");
 	const username = 'rickson-simoes';
+	const repositoryName = "GitBlogger";
 
 	async function getDataForProfileContent() {
 		const [status, profileData] = await getGithubProfileContent(username);
@@ -25,7 +26,7 @@ export function Home() {
 		<Container>
 			<Profile profileData={profileData} status={status} />
 
-			<SearchPosts />
+			<SearchPosts username={username} repositoryName={repositoryName} />
 		</Container>
 	);
 }

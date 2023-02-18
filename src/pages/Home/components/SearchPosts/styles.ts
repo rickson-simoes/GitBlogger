@@ -76,6 +76,7 @@ export const PostList = styled.section`
       display: flex;
       gap: 1rem;
       justify-content: space-between;
+      word-break: break-all;
 
       strong {
         color: ${props => props.theme.baseTitle};

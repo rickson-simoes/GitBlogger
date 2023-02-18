@@ -1,19 +1,34 @@
 import { PostList, SearchContent, SearchPostsContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { api } from "@/services/api";
+import { IIssuePost, ISearchPosts } from "@/types/appCustomTypes/types";
+import { useEffect, useState } from "react";
 
-export function SearchPosts() {
+
+export function SearchPosts({ username, repositoryName }: ISearchPosts) {
+  const [issuesPosts, setIssuesPosts] = useState<IIssuePost[]>([] as IIssuePost[]);
   const navigate = useNavigate();
 
-  function navigateTo(params: string) {
+  function navigateTo(params: number) {
     navigate(`/post/${params}`);
   }
+
+  async function getAllIssuesPosts() {
+    const response = await api.get<IIssuePost[]>(`https://api.github.com/repos/${username}/${repositoryName}/issues`);
+
+    setIssuesPosts(response.data)
+  };
+
+  useEffect(() => {
+    getAllIssuesPosts();
+  }, []);
 
   return (
     <SearchPostsContainer>
       <SearchContent>
         <div>
           <strong>Posts</strong>
-          <span>6 posts</span>
+          <span>{issuesPosts.length} posts</span>
         </div>
 
         <form>
@@ -22,23 +37,18 @@ export function SearchPosts() {
       </SearchContent>
 
       <PostList>
-        <article onClick={() => navigateTo("123")}>
-          <div>
-            <strong>JavaScript data types and data structures</strong>
-            <span>Há 1 dia</span>
-          </div>
+        {issuesPosts.map((issuePost) => (
+          <article onClick={() => navigateTo(issuePost.number)} key={issuePost.number}>
+            <div>
+              <strong>{issuePost.title}</strong>
+              <span>{issuePost.created_at.toString()}</span>
+            </div>
 
-          <span>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </span>
-        </article>
+            <span>
+              {issuePost.body}
+            </span>
+          </article>
+        ))}
       </PostList>
     </SearchPostsContainer>
   )
