@@ -3,9 +3,10 @@ import { faArrowUpRightFromSquare, faChevronLeft, faCalendarDay, faComment } fro
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Container } from './styles';
 import { NavLink } from 'react-router-dom';
-import { IPostInformation } from '@/types/appCustomTypes/types';
+import { IPostContent } from '@/types/appCustomTypes/types';
 
-export function PostInformation({ postId }: IPostInformation) {
+export function PostInformation(post: IPostContent) {
+  console.log(post);
   return (
     <Container>
       <section>
@@ -14,14 +15,14 @@ export function PostInformation({ postId }: IPostInformation) {
           <span>Back</span>
         </NavLink>
 
-        <a href="https://github.com/rickson-simoes" target="_blank">
+        <a href={post.html_url} target="_blank">
           <span>ver no github</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </section>
 
       <section>
-        <strong>Javascript Data types and data structures</strong>
+        <strong>{post.title}</strong>
       </section>
 
       <section>
@@ -31,11 +32,11 @@ export function PostInformation({ postId }: IPostInformation) {
         </div>
         <div>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <span>Há 1 dia</span>
+          <span>{String(post.created_at)}</span>
         </div>
         <div>
           <FontAwesomeIcon icon={faComment} />
-          <span>5 Comments</span>
+          <span>{post.comments} Comments</span>
         </div>
       </section>
     </Container>
