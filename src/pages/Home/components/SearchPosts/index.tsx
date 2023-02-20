@@ -1,27 +1,27 @@
 import { PostList, SearchContent, SearchPostsContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { api } from "@/services/api";
-import { IIssuePost, ISearchPosts } from "@/types/appCustomTypes/types";
+import { IPostContent, ISearchPosts } from "@/types/appCustomTypes/types";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 
 export function SearchPosts({ username, repositoryName }: ISearchPosts) {
-  const [issuesPosts, setIssuesPosts] = useState<IIssuePost[]>([] as IIssuePost[]);
+  const [posts, setPosts] = useState<IPostContent[]>([] as IPostContent[]);
   const navigate = useNavigate();
 
   function navigateTo(params: number) {
     navigate(`/post/${params}`);
   }
 
-  async function getAllIssuesPosts() {
-    const response = await api.get<IIssuePost[]>(`https://api.github.com/repos/${username}/${repositoryName}/issues`);
+  async function getAllposts() {
+    const response = await api.get<IPostContent[]>(`/repos/${username}/${repositoryName}/issues`);
 
-    setIssuesPosts(response.data)
+    setPosts(response.data)
   };
 
   useEffect(() => {
-    getAllIssuesPosts();
+    getAllposts();
   }, []);
 
   return (
@@ -29,7 +29,7 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
       <SearchContent>
         <div>
           <strong>Posts</strong>
-          <span>{issuesPosts.length} posts</span>
+          <span>{posts.length} posts</span>
         </div>
 
         <form>
@@ -38,7 +38,7 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
       </SearchContent>
 
       <PostList>
-        {issuesPosts.map((issuePost) => (
+        {posts.map((issuePost) => (
           <article onClick={() => navigateTo(issuePost.number)} key={issuePost.number}>
             <div>
               <strong>{issuePost.title}</strong>
