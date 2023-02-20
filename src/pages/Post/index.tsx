@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { PostInformation } from "./PostInformation";
 import { PostContainer } from "./styles";
 import { api } from "@/services/api";
+import { formatDistance } from 'date-fns';
+import { dateFormat } from "@/helpers/dateFormat";
 
 export function Post() {
   const [post, setPost] = useState<IPostContent>({} as IPostContent);
@@ -15,8 +17,14 @@ export function Post() {
 
   async function getPostIssueContent() {
     const response = await api.get<IPostContent>(`/repos/${username}/${repositoryName}/issues/${id}`);
+    const { data } = response;
 
-    setPost(response.data);
+    const postObj: IPostContent = {
+      ...data,
+      created_at: dateFormat(data.created_at)
+    }
+
+    setPost(postObj);
   };
 
   useEffect(() => {
@@ -25,7 +33,6 @@ export function Post() {
 
   return (
     <PostContainer>
-      {/* passar as props  */}
       <PostInformation {...post} />
 
       <article>

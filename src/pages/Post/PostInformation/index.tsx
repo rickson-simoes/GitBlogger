@@ -16,7 +16,7 @@ export function PostInformation(post: IPostContent) {
         </NavLink>
 
         <a href={post.html_url} target="_blank">
-          <span>ver no github</span>
+          <span>See on Github</span>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </section>
@@ -32,7 +32,7 @@ export function PostInformation(post: IPostContent) {
         </div>
         <div>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <span>{String(post.created_at)}</span>
+          <span>{post.created_at}</span>
         </div>
         <div>
           <FontAwesomeIcon icon={faComment} />
