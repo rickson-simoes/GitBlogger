@@ -32,10 +32,10 @@ export interface ISearchPosts {
 
 export interface IPostContent {
   title: string;
-  created_at: Date;
+  created_at: string;
   body: string;
   number: number;
-  comments?: string;
+  comments?: number;
   html_url?: string;
 }
 
