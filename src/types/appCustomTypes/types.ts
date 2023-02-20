@@ -25,20 +25,20 @@ export interface IProfile {
   profileData: IProfileData;
 }
 
-export interface IPostInformation {
-  postId: string;
-}
-
 export interface ISearchPosts {
   username: string;
   repositoryName: string;
 }
 
-export interface IIssuePost {
+export interface IPostContent {
   title: string;
   created_at: Date;
   body: string;
   number: number;
   comments?: string;
   html_url?: string;
+}
+
+export type PostParams = {
+  id: string;
 }
