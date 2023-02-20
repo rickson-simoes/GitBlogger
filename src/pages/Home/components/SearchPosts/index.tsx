@@ -4,6 +4,7 @@ import { api } from "@/services/api";
 import { IPostContent, ISearchPosts } from "@/types/appCustomTypes/types";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { dateFormat } from "@/helpers/dateFormat";
 
 
 export function SearchPosts({ username, repositoryName }: ISearchPosts) {
@@ -19,6 +20,7 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
 
     setPosts(response.data)
   };
+
 
   useEffect(() => {
     getAllposts();
@@ -42,7 +44,7 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
           <article onClick={() => navigateTo(issuePost.number)} key={issuePost.number}>
             <div>
               <strong>{issuePost.title}</strong>
-              <span>{issuePost.created_at.toString()}</span>
+              <span>{dateFormat(issuePost.created_at)}</span>
             </div>
 
             <span>
