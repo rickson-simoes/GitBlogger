@@ -42,3 +42,7 @@ export interface IPostContent {
 export type PostParams = {
   id: string;
 }
+
+export interface ISearchName {
+  search: string;
+}
