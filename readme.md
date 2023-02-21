@@ -33,15 +33,10 @@ _GitBlogger is an app which fetchs data from github api in a blog format_
 ```
 
 
-<!-- <h2>📸 App Images</h2>
+<h2>📸 App Images</h2>
 
-[![TheCoffeShop](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-1.png "Home")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-1.png "Project Demonstration")
+[![GitBlogger](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-1.png "Home")](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-1.png "Project Demonstration")
 
-[![TheCoffeShop2](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-2.png "Project Demonstration")
+[![GitBlogger2](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-2.png "Project Demonstration")
 
-[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-3.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-3.png "Project Demonstration")
-
-
-
-<h2>✍ Project interface from: </h2>
-<a href="https://www.figma.com/file/fbopzlOkUL1JzV17qTJA2n/Coffee-Delivery-(Copy)?node-id=0%3A1">- Figma Coffee Delivery</a> -->
+[![GitBlogger3](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-3.png "Success")](https://raw.githubusercontent.com/rickson-simoes/GitBlogger/master/public/imgs_samples/img-3.png "Project Demonstration")
