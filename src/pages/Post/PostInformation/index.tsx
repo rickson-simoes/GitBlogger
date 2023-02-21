@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 import { IPostContent } from '@/types/appCustomTypes/types';
 
 export function PostInformation(post: IPostContent) {
-  console.log(post);
   return (
     <Container>
       <section>
