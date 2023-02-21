@@ -1,15 +1,24 @@
 import { PostList, SearchContent, SearchPostsContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { api } from "@/services/api";
-import { IPostContent, ISearchPosts } from "@/types/appCustomTypes/types";
-import { useEffect, useState } from "react";
+import { IPostContent, ISearchName, ISearchPosts } from "@/types/appCustomTypes/types";
+import { ChangeEvent, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { dateFormat } from "@/helpers/dateFormat";
+import { useForm } from 'react-hook-form';
+import { useDebounce } from 'usehooks-ts'
 
+interface ISearchPostsThroughInput {
+  items: IPostContent[];
+}
 
 export function SearchPosts({ username, repositoryName }: ISearchPosts) {
   const [posts, setPosts] = useState<IPostContent[]>([] as IPostContent[]);
+  const [searchName, setSearchName] = useState("");
+  const debouncedValue = useDebounce<string>(searchName);
+
   const navigate = useNavigate();
+  const { register } = useForm<ISearchName>();
 
   function navigateTo(params: number) {
     navigate(`/post/${params}`);
@@ -21,10 +30,27 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
     setPosts(response.data)
   };
 
+  function getPostThroughSearchInput(e: ChangeEvent<HTMLInputElement>) {
+    const queryString = 'q=' + encodeURIComponent(`${e.target.value} repo:${username}`) + `/${repositoryName}`;
+
+    setSearchName(queryString);
+  };
+
+  async function getPost() {
+    if (debouncedValue !== "" && searchName !== "") {
+      const response = await api.get<ISearchPostsThroughInput>(`/search/issues?${searchName}`);
+
+      setPosts(response.data.items);
+    }
+  };
 
   useEffect(() => {
     getAllposts();
   }, []);
+
+  useEffect(() => {
+    getPost();
+  }, [debouncedValue])
 
   return (
     <SearchPostsContainer>
@@ -35,7 +61,14 @@ export function SearchPosts({ username, repositoryName }: ISearchPosts) {
         </div>
 
         <form>
-          <input type="text" placeholder="Search content" />
+          <input
+            type="text"
+            placeholder="Search content"
+            {...register('search', {
+              onChange: getPostThroughSearchInput,
+            })
+            }
+          />
         </form>
       </SearchContent>
 
